@@ -79,7 +79,6 @@ modale.classList.toggle("active")
 //in modale open ajout photo//
 
 let modaleAddPicture = document.querySelector(".modale_add_picture")
-console.log(modaleAddPicture)
 
 let addPictureButton = document.querySelector(".modale_footer_button")
 
@@ -116,18 +115,24 @@ function backModale(){
   modale.classList.toggle("active")
 }
 
-// AJOUT D'IMAGE VIA LA MODALE //
+// RECUPERATION IMG VIA MODAL // 
 
-let newImg = document.getElementById("new_img")
+function previewImg(){
+  let inputValue = document.querySelector(".modale_photo[type=file]").files
 
-let addImg = document.querySelector(".add_photo")
+  let previewImg = document.querySelector("#preview_img")
+  console.log(inputValue)
 
-let img = document.createElement('img')
-
-let urlImg =  "\assets\images\appartement-paris-xviii.png"
-
-img.setAttribute("src", urlImg)
-
-newImg.appendChild(img)
-
-console.log(img)
+  if (inputValue.length > 0){
+    let fileReader = new FileReader()
+    fileReader.onload = function(event){
+      document
+      .getElementById("preview_img")
+      .setAttribute("src", event.target.result)
+      
+    }
+    fileReader.readAsDataURL(inputValue[0])
+    
+  }
+  
+}

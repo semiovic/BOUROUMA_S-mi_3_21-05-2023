@@ -25,9 +25,10 @@
         <div class="modale_header_close modale-trigger">X</div>
         <h2 class="modale_header_photo">Ajout Photo</h2>
         <div class="modale_picture">
+            <img id="preview_img">
             <img class="icone_modale" src="icone" alt="icone">
             <br>
-            <input type="file" class="modale_photo"> 
+            <input onchange="previewImg()" type="file" class="modale_photo"> 
             <p>jpn,png: 4mo max</p>
         </div>
         <div class="modale_footer_picture">
