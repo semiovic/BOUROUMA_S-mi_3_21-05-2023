@@ -115,7 +115,7 @@ function backModale(){
   modale.classList.toggle("active")
 }
 
-// RECUPERATION IMG VIA MODAL // 
+// PREVISUALISATION IMG + RECUPERATION IMG VIA MODAL // 
 
 function previewImg(){
   let inputValue = document.querySelector(".modale_photo[type=file]").files
@@ -136,3 +136,46 @@ function previewImg(){
   }
   
 }
+
+// DESING PREVIEW //
+
+let modalPic = document.querySelector(".modale_picture")
+
+let clikclick = document.querySelector(".modale_photo")
+
+clikclick.addEventListener("click", desingImg)
+ 
+function desingImg(){
+modalPic.classList.add("active")
+}
+
+// ENVOI DE LIMAGE VERS L'API //
+
+function uploadImage() {
+  // Récupérer l'élément input de type file de votre modale
+  const fileInput = document.querySelector('.modale_photo[type="file"]');
+  
+  // Créer un objet FormData
+  const formData = new FormData();
+  
+  // Ajouter l'image sélectionnée à l'objet FormData
+  formData.append('image', fileInput.files[0]);
+
+  // Envoyer l'objet FormData à l'API
+  fetch('http://localhost:5678/api/works', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => {
+    console.log('Image envoyée');
+  })
+  .catch(error => {
+    console.error('Erreur lors de l\'envoi de l\'image', error);
+  });
+}
+
+let sendImgButton = document.querySelector(".modale_footer_photo")
+
+sendImgButton.addEventListener("click", uploadImage) // PAS AUTORISE A ENVOYEZ LIMG VERS LAPI ?? // 
+
+

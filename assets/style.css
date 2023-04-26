@@ -495,6 +495,8 @@
 
 	.modale_picture {
 		margin-top: 40px;
+		margin-left: 35px;
+		margin-bottom: 16px;
 		background-color: #c5d9ed;
 		width: 65%;
 		padding: 35px;
@@ -502,8 +504,23 @@
 		flex-direction: column;
 		align-items: center;
 		cursor: pointer;
+		border: solid red 2px;
+	}
 
-		
+	.modale_picture.active{
+		margin-top: 40px;
+		margin-left: 35px;
+		margin-bottom: 16px;
+		background-color: #c5d9ed;
+		width: 65%;
+		padding: 35px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		cursor: pointer;
+		border: solid red 2px;
+		display: none;
+
 	}
 
 	.icone_modale{
@@ -518,6 +535,7 @@
 margin-bottom: 10px;
 cursor: pointer;
 	}
+
 
 	.modale_header_photo{
 		display: flex;
@@ -540,3 +558,5 @@ cursor: pointer;
 	gap: 16px;
 
 }
+
+
