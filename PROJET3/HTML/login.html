@@ -13,23 +13,43 @@
     <link rel="stylesheet" href="/assets/style.css">
 </head>
 
-<body >
+<body>
 
     <div class="modale_bar">
-        <button class="modale_edit modale-trigger">Mode édition</button>
+        <button class="modale_edit">Mode édition</button>
         <div class="modale_publication">publier les changements</div>
     </div>
-    
+
+    <div class="modale_add_picture">
+        <div class="icone_retour">retour</div>
+        <div class="modale_header_close modale-trigger">X</div>
+        <h2 class="modale_header_photo">Ajout Photo</h2>
+        <div class="modale_picture">
+            <img class="icone_modale" src="icone" alt="icone">
+            <br>
+            <input type="file" class="modale_photo"> 
+            <p>jpn,png: 4mo max</p>
+        </div>
+        <div class="modale_footer_picture">
+            <div>Titre</div>
+            <input type="CHOISIR UN TITRE">
+            <div>Catégorie</div>
+            <input type="CHOIX CATEGORIE">
+            <br>
+            <button class="modale_footer_photo">Valider</button>
+        </div>
+    </div>
+
     <div class="modale">
 
-    <!--<div class="overlay modale-trigger"></div> marche bizarrement -->
+        <!--<div class="overlay modale-trigger"></div> marche bizarrement -->
         <div class="modale_header">
-            
+
             <div class="modale_header_x modale-trigger">X</div>
             <h2 class="modale_header_title">Galerie photo</h2>
         </div>
         <div class="modale_body">
-            <div  class="modale_gallery">
+            <div class="modale_gallery">
                 <figure>
                     <img src="/assets/images/abajour-tahina.png" alt="Abajour Tahina" data-objets class="active">
                     <figcaption>éditer</figcaption>
@@ -70,8 +90,8 @@
                     <figcaption>éditer</figcaption>
                 </figure>
                 <figure>
-                    <img src="/assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII" data-appartements
-                        class="active">
+                    <img src="/assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII"
+                        data-appartements class="active">
                     <figcaption>éditer</figcaption>
                 </figure>
                 <figure>
@@ -89,12 +109,12 @@
 
         <div class="modale_footer">
             <button class="modale_footer_button">Ajouter une photo</button>
-            <button class="modale_footer_delete">supprimer la galerie</button>
+            <div class="modale_footer_delete">supprimer la galerie</div>
         </div>
     </div>
 
-    
-   
+
+
 
     <header>
         <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
@@ -175,8 +195,8 @@
                     <figcaption>Villa Ferneze - Isola d’Elba</figcaption>
                 </figure>
                 <figure>
-                    <img src="/assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII" data-appartements
-                        class="active">
+                    <img src="/assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII"
+                        data-appartements class="active">
                     <figcaption>Appartement Paris XVIII</figcaption>
                 </figure>
                 <figure>
@@ -188,6 +208,8 @@
                     <img src="/assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi"
                         data-hotel class="active">
                     <figcaption>Hotel First Arte - New Delhi</figcaption>
+                </figure>
+                <figure id="new_img">
                 </figure>
             </div>
         </section>

@@ -354,6 +354,7 @@
 		justify-content: center;
 		gap: 25px;
 		display: none;
+		border-radius: 10px;
 	
 	}
 
@@ -376,17 +377,27 @@
 		cursor: pointer;
 	}
 
+	.modale_header_close{
+		position: absolute;
+		top: 8px;
+		right: 8px;
+		cursor: pointer;
+	}
+
 	.modale_header_title {
 		display: flex;
 		justify-content: center;
 		color: black;
 		font-size: 20px;
 		margin-bottom: 5px;
+		padding: 25px;
 	}
 
 	.modale_footer {
 		display: flex;
 		flex-direction: column;
+		padding: 16px;
+		align-items: center;
 		
 
 	}
@@ -394,10 +405,19 @@
 	.modale_footer_button {
 		color: white;
 		background-color: #1D6154;
+		width: 180px;
+		border-radius: 100px;
+		padding: 5px;
+		cursor: pointer;
+	
+
 	}
 
 	.modale_footer_delete {
 		color: red;
+		cursor: pointer;
+		padding: 10px;
+	
 	}
 
 	.modale_gallery {
@@ -440,4 +460,83 @@
 		border-radius: 100px;
 	}
 
+	.modale_add_picture {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 450px;
+		height: 550px;
+		background-color: white;
+		box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+		border-radius: 3px;
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 30px;
+		border-radius: 10px;
+		display: none;
+	}
+
+	.modale_add_picture.active{
+		display: block;
+	}
+
+	.modale_footer_photo {
+		color: white;
+		background-color: gray;
+		width: 180px;
+		border-radius: 100px;
+		padding: 5px;
+		cursor: pointer;
 	
+	}
+
+	.modale_picture {
+		margin-top: 40px;
+		background-color: #c5d9ed;
+		width: 65%;
+		padding: 35px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		cursor: pointer;
+
+		
+	}
+
+	.icone_modale{
+		border: solid red 1px;
+	}
+
+	.modale_photo{
+	background-color: #4f94d4;
+	border-radius: 100px;
+	padding: 8px;
+	color: blue;
+margin-bottom: 10px;
+cursor: pointer;
+	}
+
+	.modale_header_photo{
+		display: flex;
+		justify-content: center;
+		color: black;
+		font-size: 20px;
+		margin-top: 55px;
+	}
+
+.icone_retour{
+	position: absolute;
+		top: 8px;
+		left: 15px;
+		cursor: pointer;
+}
+
+.modale_footer_picture{
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+
+}

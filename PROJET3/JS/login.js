@@ -63,16 +63,71 @@ getWorks().then(() => displayWorks())
 
 // MODALE // 
 
+//open modale//
 const modale = document.querySelector(".modale")
 
 
-const modaleTrigger = document.querySelectorAll(".modale-trigger")
+const editOpenModale = document.querySelector(".modale_edit")
 
-modaleTrigger.forEach(trigger => trigger.addEventListener("click", toggleModale))
+editOpenModale.addEventListener("click", toggleModale)
 
 function toggleModale(){
 modale.classList.toggle("active")
-
 }
+
+
+//in modale open ajout photo//
+
+let modaleAddPicture = document.querySelector(".modale_add_picture")
+console.log(modaleAddPicture)
+
+let addPictureButton = document.querySelector(".modale_footer_button")
+
+addPictureButton.addEventListener("click", toggleModalePicture)
  
-test repo
+function toggleModalePicture(){
+  modaleAddPicture.classList.toggle("active")
+  modale.classList.remove("active")
+}
+
+// FERMETURE DES DEUX MODALES  + retour// 
+
+const modaleTrigger = document.querySelector(".modale_header_x")
+
+const modaleTrigger2 = document.querySelector(".modale_header_close")
+
+modaleTrigger.addEventListener("click", closeModale)
+
+modaleTrigger2.addEventListener("click", closeModale)
+
+function closeModale(){
+  modale.classList.remove("active")
+  modaleAddPicture.classList.remove("active")
+}
+
+// retour en arriere //
+
+let returnModale = document.querySelector(".icone_retour")
+
+returnModale.addEventListener("click", backModale)
+
+function backModale(){
+  modaleAddPicture.classList.remove("active")
+  modale.classList.toggle("active")
+}
+
+// AJOUT D'IMAGE VIA LA MODALE //
+
+let newImg = document.getElementById("new_img")
+
+let addImg = document.querySelector(".add_photo")
+
+let img = document.createElement('img')
+
+let urlImg =  "\assets\images\appartement-paris-xviii.png"
+
+img.setAttribute("src", urlImg)
+
+newImg.appendChild(img)
+
+console.log(img)
