@@ -179,6 +179,6 @@ function uploadImage() {
 
 let sendImgButton = document.querySelector(".modale_footer_photo")
 
-sendImgButton.addEventListener("click", uploadImage) // PAS AUTORISE A ENVOYEZ LIMG VERS LAPI ?? // 
+sendImgButton.addEventListener("click", uploadImage) // PAS AUTORISE A ENVOYEZ LIMG VERS LAPI ?? //  // COUCOU TEST REPO//
 
 
