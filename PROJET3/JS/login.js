@@ -164,7 +164,10 @@ function uploadImage() {
   // Envoyer l'objet FormData à l'API
   fetch('http://localhost:5678/api/works', {
     method: 'POST',
-    body: formData
+    body: formData,
+    headers:{
+      Authorization:  `Bearer ${localStorage.getItem('token')}` 
+    }
   })
   .then(response => {
     console.log('Image envoyée');

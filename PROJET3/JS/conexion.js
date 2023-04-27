@@ -57,9 +57,10 @@ validation.addEventListener('click', function () {
     },
   }).then((response) => response.json())
     .then((data) => {
-      let token = data
-      localStorage.setItem('token', token)
-      console.log(token)
+      localStorage.setItem('token', data.token)
+      window.location.replace('/PROJET3/HTML/login.html')
+
+      
     })
     .catch((err)=> {
       console.log(err)
@@ -73,12 +74,12 @@ validation.addEventListener('click', function () {
         // Si un jeton est présent dans le stockage local, l'utilisateur est connecté
         isLoggedIn = true 
         console.log(token) // Affiche le jeton dans la console
-        window.location.replace('/PROJET3/HTML/login.html') // Redirige l'utilisateur vers la page d'accueil
+         // Redirige l'utilisateur vers la page d'accueil
       }
       console.log(isLoggedIn) // Affiche si l'utilisateur est connecté ou non
     }
     
     // Appelle la fonction checkToken() pour vérifier si l'utilisateur est connecté
-    checkToken()
+   
 })
 
