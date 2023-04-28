@@ -58,7 +58,7 @@ validation.addEventListener('click', function () {
   }).then((response) => response.json())
     .then((data) => {
       localStorage.setItem('token', data.token)
-      window.location.replace('/PROJET3/HTML/login.html')
+      window.location.replace('/PROJET3/HTML/index.html')
 
       
     })

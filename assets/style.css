@@ -439,7 +439,7 @@
 	.modale_bar {
 		background-color: black;
 		padding: 5px;
-		display: flex;
+		display: flex;	
 		align-items: center;
 		justify-content: center;
 		gap: 16px;
@@ -447,16 +447,24 @@
 		top: 0;	
 		left: 0;
 		right: 0;
+		display: none;
+		
+		
+	}
+
+	.modale_bar.active{
+		display: block;
 	}
 
 	.modale_edit {
 	color: white;
+	display: flex;
 	}
 
 	.modale_publication {
 		background-color: white;
 		font-size: bold;
-		padding: 8px;
+		
 		border-radius: 100px;
 	}
 
@@ -560,3 +568,21 @@ cursor: pointer;
 }
 
 
+.thumbnail {
+	width: 100px;
+	height: 100px;
+	margin: 10px;
+	object-fit: cover;
+  }
+
+  .login.active{
+	display: none;
+  }
+
+  .logout{
+	display: none;
+  }
+
+  .logout.active{
+	display: block;
+  }

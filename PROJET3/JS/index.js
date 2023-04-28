@@ -56,3 +56,152 @@ filters.forEach(filter => {
   })
 })
 getWorks().then(() => displayWorks())
+
+// MODALE // 
+
+//open modale//
+const modale = document.querySelector(".modale")
+
+
+const editOpenModale = document.querySelector(".modale_edit")
+
+editOpenModale.addEventListener("click", toggleModale)
+
+function toggleModale(){
+modale.classList.toggle("active")
+}
+
+
+//in modale open ajout photo//
+
+let modaleAddPicture = document.querySelector(".modale_add_picture")
+
+let addPictureButton = document.querySelector(".modale_footer_button")
+
+addPictureButton.addEventListener("click", toggleModalePicture)
+ 
+function toggleModalePicture(){
+  modaleAddPicture.classList.toggle("active")
+  modale.classList.remove("active")
+}
+
+// FERMETURE DES DEUX MODALES  + retour// 
+
+const modaleTrigger = document.querySelector(".modale_header_x")
+
+const modaleTrigger2 = document.querySelector(".modale_header_close")
+
+modaleTrigger.addEventListener("click", closeModale)
+
+modaleTrigger2.addEventListener("click", closeModale)
+
+function closeModale(){
+  modale.classList.remove("active")
+  modaleAddPicture.classList.remove("active")
+}
+
+// retour en arriere //
+
+let returnModale = document.querySelector(".icone_retour")
+
+returnModale.addEventListener("click", backModale)
+
+function backModale(){
+  modaleAddPicture.classList.remove("active")
+  modale.classList.toggle("active")
+}
+
+// PREVISUALISATION IMG + RECUPERATION IMG VIA MODAL // 
+
+function previewImg(){
+  let inputValue = document.querySelector(".modale_photo[type=file]").files
+
+  let previewImg = document.querySelector("#preview_img")
+  console.log(inputValue)
+
+  if (inputValue.length > 0){
+    let fileReader = new FileReader()
+    fileReader.onload = function(event){
+      document
+      .getElementById("preview_img")
+      .setAttribute("src", event.target.result)
+      
+    }
+    fileReader.readAsDataURL(inputValue[0])
+    
+  }
+  
+}
+
+// DESING PREVIEW //
+
+let modalPic = document.querySelector(".modale_picture")
+
+let clikclick = document.querySelector(".modale_photo")
+
+clikclick.addEventListener("click", desingImg)
+ 
+function desingImg(){
+modalPic.classList.add("active")
+}
+
+// ENVOI DE LIMAGE VERS L'API //
+
+function uploadImage() {
+  // Récupérer l'élément input de type file de votre modale
+  const fileInput = document.querySelector('.modale_photo[type="file"]');
+  
+  // Créer un objet FormData
+  const formData = new FormData();
+  
+  // Ajouter l'image sélectionnée à l'objet FormData
+  formData.append('image', fileInput.files[0]);
+
+  // Envoyer l'objet FormData à l'API
+  fetch('http://localhost:5678/api/works', {
+    method: 'POST',
+    body: formData,
+    headers:{
+      Authorization:  `Bearer ${localStorage.getItem('token')}` 
+    }
+  })
+  .then(response => {
+    console.log('Image envoyée');
+  })
+  .catch(error => {
+    console.error('Erreur lors de l\'envoi de l\'image', error);
+  });
+}
+
+let sendImgButton = document.querySelector(".modale_footer_photo")
+
+sendImgButton.addEventListener("click", uploadImage) // PAS AUTORISE A ENVOYEZ LIMG VERS LAPI ?? //  // COUCOU TEST REPO//
+
+
+// Vérifiez si le token est présent dans le localStorage
+const token = localStorage.getItem('token');
+console.log(token)
+
+// Si le token est présent, afficher la modale
+if (token) {
+  // Afficher la barre de la modale
+  const modalBar = document.querySelector('.modale_bar')
+  modalBar.classList.toggle("active")
+
+  let linkLogin = document.querySelector('.login')
+  linkLogin.classList.toggle("active")
+
+  let linkLogout = document.querySelector(".logout")
+  linkLogout.classList.toggle("active")
+
+linkLogout.addEventListener("click",function(){
+  localStorage.clear(token)
+})
+  
+} else {
+  // Si le token n'est pas présent, masquer la modale
+  const modal = document.querySelector(".modale_bar")
+  modal.classList.remove("active")
+
+  
+}

@@ -11,6 +11,106 @@
 	<link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
+
+
+	<div class="modale_bar">
+        <button class="modale_edit">Mode édition</button>
+        <div class="modale_publication">publier les changements</div>
+    </div>
+
+
+        <div class="modale">
+
+            <!--<div class="overlay modale-trigger"></div> marche bizarrement -->
+            <div class="modale_header">
+
+                <div class="modale_header_x modale-trigger">X</div>
+                <h2 class="modale_header_title">Galerie photo</h2>
+            </div>
+            <div class="modale_body">
+                <div class="modale_gallery">
+                    <figure>
+                        <img src="/assets/images/abajour-tahina.png" alt="Abajour Tahina" data-objets class="active">
+                        <figcaption>éditer</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/appartement-paris-v.png" alt="Appartement Paris V" data-appartements
+                            class="active">
+                        <figcaption>éditer</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres"
+                            data-hotel class="active">
+                        <figcaption>éditer</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis"
+                            data-appartements class="active">
+                        <figcaption>éditer</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/structures-thermopolis.png" alt="Structures Thermopolis" data-objets
+                            class="active">
+                        <figcaption>éditer</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/appartement-paris-x.png" alt="Appartement Paris X" data-appartements
+                            class="active">
+                        <figcaption>éditer</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis"
+                            data-appartements class="active">
+                        <figcaption>éditer</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba" data-appartements
+                            class="active">
+                        <figcaption>éditer</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII"
+                            data-appartements class="active">
+                        <figcaption>éditer</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris" data-hotel
+                            class="active">
+                        <figcaption>éditer</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi"
+                            data-hotel class="active">
+                        <figcaption>éditer</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="modale_footer">
+                <button class="modale_footer_button">Ajouter une photo</button>
+                <div class="modale_footer_delete">supprimer la galerie</div>
+            </div>
+        </div>
+		<div class="modale_add_picture">
+			<div class="icone_retour">retour</div>
+			<div class="modale_header_close modale-trigger">X</div>
+			<h2 class="modale_header_photo">Ajout Photo</h2>
+	
+			<img id="preview_img" width="150px">
+			<div class="modale_picture">
+	
+				<input onchange="previewImg()" type="file" class="modale_photo">
+				<p>jpn,png: 4mo max</p>
+				 </div>
+					<div class="modale_footer_picture">
+						<div>Titre</div>
+						<input type="CHOISIR UN TITRE">
+						<div>Catégorie</div>
+						<input type="CHOIX CATEGORIE">
+						<br>
+						<button class="modale_footer_photo">Valider</button>
+					</div>
+			</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
@@ -18,7 +118,8 @@
 			<li>projets</li>
 			<li>contact</li>
 			<a href="/PROJET3/HTML/conexion.html">
-				<li>login</li>
+				<li class="login">login</li>
+				<li class="logout">logout</li>
 			</a>
 			<li><img src="/assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
