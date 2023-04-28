@@ -59,20 +59,123 @@ getWorks().then(() => displayWorks())
 
 // MODALE // 
 
-//open modale//
-const modale = document.querySelector(".modale")
+const modal = document.querySelector(".modale")
+const openModalBtn = document.querySelector(".modale_edit")
+const worksContainer = document.getElementById("works-container");
 
-
-const editOpenModale = document.querySelector(".modale_edit")
-
-editOpenModale.addEventListener("click", toggleModale)
-
-function toggleModale(){
-modale.classList.toggle("active")
+// Fonction pour récupérer les works de l'API
+async function fetchWorks() {
+  try {
+    const response = await fetch("http://localhost:5678/api/works");
+    const works = await response.json();
+    return works;
+  } catch (error) {
+    console.error(error);
+  }
 }
+
+// Fonction pour créer et ajouter les éléments HTML des works dans la modale
+function buildWorks(works) {
+  works.forEach((work) => {
+    const workDiv = document.createElement("div");
+    const workImg = document.createElement("img");
+    const deleteIcon = document.createElement("span");
+
+    workImg.setAttribute("src", work.imageUrl);
+    workImg.setAttribute("alt", "work image");
+    workImg.classList.add("work-img");
+
+    deleteIcon.classList.add("delete-icon");
+    deleteIcon.innerHTML = '<i class="fas fa-trash"></i>';
+    deleteIcon.addEventListener("click", () => {  // supression poubelle // 
+      deleteWork(work.id, workDiv);
+    });
+
+
+    workDiv.appendChild(deleteIcon);
+    workDiv.appendChild(workImg);
+    workDiv.classList.add("work-thumbnail"); // Ajout de la classe "work-thumbnail" pour chaque workDiv
+    worksContainer.appendChild(workDiv);
+
+    // Ajout des styles pour positionner l'icône dans le coin droit
+    workDiv.style.position = "relative";
+    deleteIcon.style.position = "absolute";
+    deleteIcon.style.top = "5px";
+    deleteIcon.style.right = "5px";
+    deleteIcon.style.transform = "translate(50%, -50%)";
+    deleteIcon.style.fontSize = "10px";
+    deleteIcon.style.color = "black";
+  });
+}
+
+// Fonction pour ouvrir la modale et afficher les works
+async function openModal() {
+  const works = await fetchWorks();
+  buildWorks(works);
+  modal.style.display = "block";
+}
+
+// Fonction pour fermer la modale et vider le contenu
+function closeModal() {
+  modal.style.display = "none";
+  worksContainer.innerHTML = "";
+}
+
+// Événement pour ouvrir la modale
+openModalBtn.addEventListener("click", openModal);
+
+// Événement pour fermer la modale
+const modaleTrigger = document.querySelector(".modale_header_x")
+
+const modaleTrigger2 = document.querySelector(".modale_header_close")
+
+modaleTrigger.addEventListener("click", closeModal)
+
+modaleTrigger2.addEventListener("click", closeModal)
+
+// Événement pour fermer la modale avec la touche Escape
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeModal();
+  }
+});
+
+// SUPRESSION IMG VIA MODALE //
+
+
+async function deleteWork(workId, workDiv) {
+  try {
+    const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    });
+    if (response.ok) {
+      // Supprimer l'élément parent de l'icône
+      workDiv.parentNode.removeChild(workDiv);
+    } else {
+      console.error("Une erreur est survenue lors de la suppression de l'image.");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// BOUTTON SuPRESSION GALERI QUI REFRESH PAGE // 
+
+const supprimerViaModale = document.querySelector(".modale_footer_delete");
+
+supprimerViaModale.addEventListener("click", () => {
+  location.reload();
+});
+
 
 
 //in modale open ajout photo//
+
+let modale = document.querySelector(".modale")
 
 let modaleAddPicture = document.querySelector(".modale_add_picture")
 
@@ -85,20 +188,7 @@ function toggleModalePicture(){
   modale.classList.remove("active")
 }
 
-// FERMETURE DES DEUX MODALES  + retour// 
 
-const modaleTrigger = document.querySelector(".modale_header_x")
-
-const modaleTrigger2 = document.querySelector(".modale_header_close")
-
-modaleTrigger.addEventListener("click", closeModale)
-
-modaleTrigger2.addEventListener("click", closeModale)
-
-function closeModale(){
-  modale.classList.remove("active")
-  modaleAddPicture.classList.remove("active")
-}
 
 // retour en arriere //
 
@@ -147,35 +237,41 @@ modalPic.classList.add("active")
 
 // ENVOI DE LIMAGE VERS L'API //
 
-function uploadImage() {
-  // Récupérer l'élément input de type file de votre modale
-  const fileInput = document.querySelector('.modale_photo[type="file"]');
-  
-  // Créer un objet FormData
+const addPhotoChoice = document.querySelector(".modale_footer_photo");
+
+addPhotoChoice.addEventListener("click", async (event) => {
+  event.preventDefault();
+  const title = document.getElementById("title-input").value;
+  const category = document.getElementById("category-input").value;
+  const image = document.getElementById("image-input");
+  console.log(image); // imprimer la valeur de l'élément HTML pour le champ de fichier
+
   const formData = new FormData();
-  
-  // Ajouter l'image sélectionnée à l'objet FormData
-  formData.append('image', fileInput.files[0]);
+  formData.append("title", title);
+  formData.append("category", category);
+  formData.append("image", image.files[0]);
 
-  // Envoyer l'objet FormData à l'API
-  fetch('http://localhost:5678/api/works', {
-    method: 'POST',
-    body: formData,
-    headers:{
-      Authorization:  `Bearer ${localStorage.getItem('token')}` 
+  try {
+    const response = await fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error("Erreur lors de l'ajout de la photo");
     }
-  })
-  .then(response => {
-    console.log('Image envoyée');
-  })
-  .catch(error => {
-    console.error('Erreur lors de l\'envoi de l\'image', error);
-  });
-}
 
-let sendImgButton = document.querySelector(".modale_footer_photo")
+    // Rafraîchir la page pour afficher la nouvelle photo
+    window.location.reload();
+  } catch (error) {
+    console.error(error);
+  }
+});
 
-sendImgButton.addEventListener("click", uploadImage) // PAS AUTORISE A ENVOYEZ LIMG VERS LAPI ?? //  // COUCOU TEST REPO//
+
 
 
 // Vérifiez si le token est présent dans le localStorage
@@ -202,6 +298,4 @@ linkLogout.addEventListener("click",function(){
   // Si le token n'est pas présent, masquer la modale
   const modal = document.querySelector(".modale_bar")
   modal.classList.remove("active")
-
-  
 }

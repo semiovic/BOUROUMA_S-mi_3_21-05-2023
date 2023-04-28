@@ -420,21 +420,9 @@
 	
 	}
 
-	.modale_gallery {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		width: 100%;
-		max-width: 1300px;
-		gap: 16px;
-		border-bottom: solid grey 2px;
-		margin-bottom: 16px;
-		padding-bottom: 16px;
-	}
+	
 
-	.modale_gallery img {
-		width: 70px;
-	}
+	
 
 	.modale_bar {
 		background-color: black;
@@ -567,12 +555,23 @@ cursor: pointer;
 
 }
 
-
-.thumbnail {
-	width: 100px;
-	height: 100px;
-	margin: 10px;
-	object-fit: cover;
+.work-thumbnail {
+	display: inline-block;
+	width: 55px; /* Largeur de la miniature */
+	height: 65px; /* Hauteur de la miniature */
+	margin: 10px; /* Marge entre les miniatures */
+	overflow: hidden; /* Masquer le contenu dépassant de la miniature */
+	cursor: pointer; /* Afficher le curseur pointer au survol de la miniature */
+	border: 1px solid #ccc; /* Ajouter une bordure autour de la miniature */
+  }
+  
+  .work-thumbnail:hover {
+	opacity: 0.8; /* Réduire l'opacité de la miniature au survol */
+  }
+  
+  .work-thumbnail img {
+	width: 100%; /* Adapter la largeur de l'image à celle de la miniature */
+	height: auto; /* Maintenir le ratio de l'image */
   }
 
   .login.active{
@@ -586,3 +585,4 @@ cursor: pointer;
   .logout.active{
 	display: block;
   }
+
