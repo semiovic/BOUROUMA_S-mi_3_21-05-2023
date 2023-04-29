@@ -422,11 +422,15 @@
 
 	
 
-	
-
 	.modale_bar {
+		display: none;
+	}
+
+	.modale_bar.active{
+		display: block;
+		display: flex;
 		background-color: black;
-		padding: 5px;
+		padding: 8px;
 		display: flex;	
 		align-items: center;
 		justify-content: center;
@@ -435,25 +439,19 @@
 		top: 0;	
 		left: 0;
 		right: 0;
-		display: none;
-		
-		
-	}
-
-	.modale_bar.active{
-		display: block;
 	}
 
 	.modale_edit {
 	color: white;
 	display: flex;
+	background-color: black;
 	}
 
 	.modale_publication {
 		background-color: white;
 		font-size: bold;
-		
-		border-radius: 100px;
+		padding: 5px;
+		border-radius: 200px;
 	}
 
 	.modale_add_picture {

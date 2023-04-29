@@ -201,39 +201,6 @@ function backModale(){
   modale.classList.toggle("active")
 }
 
-// PREVISUALISATION IMG + RECUPERATION IMG VIA MODAL // 
-
-function previewImg(){
-  let inputValue = document.querySelector(".modale_photo[type=file]").files
-
-  let previewImg = document.querySelector("#preview_img")
-  console.log(inputValue)
-
-  if (inputValue.length > 0){
-    let fileReader = new FileReader()
-    fileReader.onload = function(event){
-      document
-      .getElementById("preview_img")
-      .setAttribute("src", event.target.result)
-      
-    }
-    fileReader.readAsDataURL(inputValue[0])
-    
-  }
-  
-}
-
-// DESING PREVIEW //
-
-let modalPic = document.querySelector(".modale_picture")
-
-let clikclick = document.querySelector(".modale_photo")
-
-clikclick.addEventListener("click", desingImg)
- 
-function desingImg(){
-modalPic.classList.add("active")
-}
 
 // ENVOI DE LIMAGE VERS L'API //
 
@@ -242,7 +209,7 @@ const addPhotoChoice = document.querySelector(".modale_footer_photo");
 addPhotoChoice.addEventListener("click", async (event) => {
   event.preventDefault();
   const title = document.getElementById("title-input").value;
-  const category = document.getElementById("category-input").value;
+  const category = document.getElementById("category").value;
   const image = document.getElementById("image-input");
   console.log(image); // imprimer la valeur de l'élément HTML pour le champ de fichier
 
@@ -261,6 +228,8 @@ addPhotoChoice.addEventListener("click", async (event) => {
     });
 
     if (!response.ok) {
+      const errorMessage = await response.text();
+      console.log(errorMessage);
       throw new Error("Erreur lors de l'ajout de la photo");
     }
 
@@ -270,9 +239,9 @@ addPhotoChoice.addEventListener("click", async (event) => {
     console.error(error);
   }
 });
+ 
 
-
-
+  
 
 // Vérifiez si le token est présent dans le localStorage
 const token = localStorage.getItem('token');
@@ -290,10 +259,7 @@ if (token) {
   let linkLogout = document.querySelector(".logout")
   linkLogout.classList.toggle("active")
 
-linkLogout.addEventListener("click",function(){
-  localStorage.clear(token)
-})
-  
+
 } else {
   // Si le token n'est pas présent, masquer la modale
   const modal = document.querySelector(".modale_bar")
