@@ -258,7 +258,13 @@ if (token) {
 
   let linkLogout = document.querySelector(".logout")
   linkLogout.classList.toggle("active")
-
+linkLogout.addEventListener("click", function(){
+  localStorage.clear()
+})
+linkLogout.addEventListener("click", function(){
+  localStorage.clear();
+  window.location.replace("index.html")
+})
 
 } else {
   // Si le token n'est pas présent, masquer la modale

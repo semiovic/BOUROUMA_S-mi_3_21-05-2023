@@ -3,83 +3,55 @@
 // utiliser fetch post //
 
 
-function login() {
-  let username = document.getElementById("username").value; // ?? mettre id dans le html //
-  let password = document.getElementById("password").value;
+// validation formulaire connexion + message erreur //
+let validation = document.getElementById("button_envoi");
+let inputMail = document.getElementById("mail");
+let inputPassword = document.getElementById("password");
+let errorMail = document.querySelector('#error');
+let errorPassword = document.querySelector('#error2');
 
-  if (username == "mon_nom_d_utilisateur" && password == "mon_mot_de_passe") {
-    alert("Connexion réussie !");
-    // rediriger l'utilisateur vers la page de son choix
+validation.addEventListener('click', function (event) {
+  event.preventDefault();
+
+  // Vérification du champ e-mail
+  if (inputMail.value === "") {
+    errorMail.textContent = "L'adresse e-mail est requise";
+    return;
+  } else if (!inputMail.checkValidity()) {
+    errorMail.textContent = "Veuillez saisir une adresse e-mail valide";
+    return;
+  } else {
+    errorMail.textContent = "";
+  }
+
+  // Vérification du champ mot de passe
+  if (inputPassword.value === "") {
+    errorPassword.textContent = "Le mot de passe est requis";
+    return;
+  } else {
+    errorPassword.textContent = "";
+  }
+
+  // Envoi de la requête
+  if (inputMail.value === "sophie.bluel@test.tld" && inputPassword.value === "S0phie") {
+    fetch("http://localhost:5678/api/users/login", {
+      method: 'POST',
+      body: JSON.stringify({
+        email: inputMail.value,
+        password: inputPassword.value
+      }),
+      headers: {  
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    }).then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem('token', data.token);
+        window.location.replace('/PROJET3/HTML/index.html');
+      })
+      .catch((err)=> {
+        console.log(err);
+      });
   } else {
     alert("Nom d'utilisateur ou mot de passe incorrect.");
   }
-}
-
-
-//  validation formulaire conexion + message erreur //
-
-let validation = document.getElementById("button_envoi")
-
-validation.addEventListener('click', function () {
-
-  let inputMail = document.getElementById("mail")
-  let inputPassword = document.getElementById("password")
-
-  if (inputMail.value.trim() === "") {
-    let myError = document.getElementById('error')
-    myError.innerHTML = "E-mail requis!"
-    myError.style.color = "red"
-
-  }
-
-  if (inputPassword.value.trim() === "") {
-    let myError2 = document.getElementById('error2')
-    myError2.innerHTML = "Mot de passe incorrect!"
-    myError2.style.color = "red"
-    e.preventDefault()
-  }
-
-  let email = inputMail.value
-  let password = inputPassword.value
-
-  // vider les champs
-
-  
-
-
-  fetch("http://localhost:5678/api/users/login", {
-    method: 'POST',
-    body: JSON.stringify({
-      email,password
-    }),
-    headers: {  
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  }).then((response) => response.json())
-    .then((data) => {
-      localStorage.setItem('token', data.token)
-      window.location.replace('/PROJET3/HTML/index.html')
-
-      
-    })
-    .catch((err)=> {
-      console.log(err)
-    })
-
-    function checkToken() {
-      let token = localStorage.getItem('token')
-      localStorage.clear() // Vide complètement le stockage local
-      let isLoggedIn = false
-      if (token) {
-        // Si un jeton est présent dans le stockage local, l'utilisateur est connecté
-        isLoggedIn = true 
-        console.log(token) // Affiche le jeton dans la console
-         // Redirige l'utilisateur vers la page d'accueil
-      }
-      console.log(isLoggedIn) // Affiche si l'utilisateur est connecté ou non
-    }
-    
-    // Appelle la fonction checkToken() pour vérifier si l'utilisateur est connecté
-   
-})
-
+});

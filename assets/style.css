@@ -295,6 +295,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		gap: 16px;
 
 	}
 
@@ -335,7 +336,7 @@
 
 	/* MODALE */
 
-	
+
 
 	.modale {
 		position: fixed;
@@ -355,7 +356,7 @@
 		gap: 25px;
 		display: none;
 		border-radius: 10px;
-	
+
 	}
 
 	.modale.active {
@@ -377,7 +378,7 @@
 		cursor: pointer;
 	}
 
-	.modale_header_close{
+	.modale_header_close {
 		position: absolute;
 		top: 8px;
 		right: 8px;
@@ -398,7 +399,7 @@
 		flex-direction: column;
 		padding: 16px;
 		align-items: center;
-		
+
 
 	}
 
@@ -409,7 +410,7 @@
 		border-radius: 100px;
 		padding: 5px;
 		cursor: pointer;
-	
+
 
 	}
 
@@ -417,40 +418,40 @@
 		color: red;
 		cursor: pointer;
 		padding: 10px;
-	
+
 	}
 
-	
+
 
 	.modale_bar {
 		display: none;
 	}
 
-	.modale_bar.active{
+	.modale_bar.active {
 		display: block;
 		display: flex;
 		background-color: black;
-		padding: 8px;
-		display: flex;	
+		padding: 9px;
 		align-items: center;
 		justify-content: center;
 		gap: 16px;
 		position: absolute;
-		top: 0;	
+		top: 0;
 		left: 0;
 		right: 0;
+
 	}
 
 	.modale_edit {
-	color: white;
-	display: flex;
-	background-color: black;
+		color: white;
+		display: flex;
+		background-color: black;
 	}
 
 	.modale_publication {
 		background-color: white;
-		font-size: bold;
-		padding: 5px;
+		font-weight: bold;
+		padding: 8px;
 		border-radius: 200px;
 	}
 
@@ -473,7 +474,7 @@
 		display: none;
 	}
 
-	.modale_add_picture.active{
+	.modale_add_picture.active {
 		display: block;
 	}
 
@@ -484,7 +485,7 @@
 		border-radius: 100px;
 		padding: 5px;
 		cursor: pointer;
-	
+
 	}
 
 	.modale_picture {
@@ -501,7 +502,7 @@
 		border: solid red 2px;
 	}
 
-	.modale_picture.active{
+	.modale_picture.active {
 		margin-top: 40px;
 		margin-left: 35px;
 		margin-bottom: 16px;
@@ -517,21 +518,21 @@
 
 	}
 
-	.icone_modale{
+	.icone_modale {
 		border: solid red 1px;
 	}
 
-	.modale_photo{
-	background-color: #4f94d4;
-	border-radius: 100px;
-	padding: 8px;
-	color: blue;
-margin-bottom: 10px;
-cursor: pointer;
+	.modale_photo {
+		background-color: #4f94d4;
+		border-radius: 100px;
+		padding: 8px;
+		color: blue;
+		margin-bottom: 10px;
+		cursor: pointer;
 	}
 
 
-	.modale_header_photo{
+	.modale_header_photo {
 		display: flex;
 		justify-content: center;
 		color: black;
@@ -539,48 +540,103 @@ cursor: pointer;
 		margin-top: 55px;
 	}
 
-.icone_retour{
-	position: absolute;
+	.icone_retour {
+		position: absolute;
 		top: 8px;
 		left: 15px;
 		cursor: pointer;
+	}
+
+	.modale_footer_picture {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+
+	}
+
+	.work-thumbnail {
+		display: inline-block;
+		width: 55px;
+		/* Largeur de la miniature */
+		height: 65px;
+		/* Hauteur de la miniature */
+		margin: 10px;
+		/* Marge entre les miniatures */
+		overflow: hidden;
+		/* Masquer le contenu dépassant de la miniature */
+		cursor: pointer;
+		/* Afficher le curseur pointer au survol de la miniature */
+		border: 1px solid #ccc;
+		/* Ajouter une bordure autour de la miniature */
+	}
+
+	.work-thumbnail:hover {
+		opacity: 0.8;
+		/* Réduire l'opacité de la miniature au survol */
+	}
+
+	.work-thumbnail img {
+		width: 100%;
+		/* Adapter la largeur de l'image à celle de la miniature */
+		height: auto;
+		/* Maintenir le ratio de l'image */
+	}
+
+.log_in{
+	color: black;
+	cursor: pointer;
 }
 
-.modale_footer_picture{
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
+	.login.active {
+		display: none;
+		cursor: pointer;
+	}
 
-}
+	.logout {
+		display: none;
+		cursor: pointer;
+	}
 
-.work-thumbnail {
-	display: inline-block;
-	width: 55px; /* Largeur de la miniature */
-	height: 65px; /* Hauteur de la miniature */
-	margin: 10px; /* Marge entre les miniatures */
-	overflow: hidden; /* Masquer le contenu dépassant de la miniature */
-	cursor: pointer; /* Afficher le curseur pointer au survol de la miniature */
-	border: 1px solid #ccc; /* Ajouter une bordure autour de la miniature */
-  }
-  
-  .work-thumbnail:hover {
-	opacity: 0.8; /* Réduire l'opacité de la miniature au survol */
-  }
-  
-  .work-thumbnail img {
-	width: 100%; /* Adapter la largeur de l'image à celle de la miniature */
-	height: auto; /* Maintenir le ratio de l'image */
-  }
+	.logout.active {
+		display: block;
+		cursor: pointer;
+	}
 
-  .login.active{
-	display: none;
-  }
+	.modale_bar i {
+		color: white;
 
-  .logout{
-	display: none;
-  }
+	}
 
-  .logout.active{
-	display: block;
-  }
+	.header_margin {
+		padding-top: 25px;
+	}
 
+	#mail {
+		border: none;
+		box-shadow: 2px 2px 2px gray;
+		padding-right: 40px;
+		padding-left: 25px;
+	}
+
+	#password {
+		border: none;
+		box-shadow: 2px 2px 2px gray;
+		padding-right: 40px;
+		padding-left: 25px;
+	}
+
+	.size_font{
+		font-size: smaller;
+	}
+
+	#button_envoi{
+		background-color: #1D6154;
+		color: white;
+		border: solid 2px #1D6154;
+		border-radius: 100px;
+		padding: 2px;
+		padding-left: 25px;
+		padding-right: 25px;
+		margin-left: 45px;
+
+	}
