@@ -485,6 +485,7 @@
 		border-radius: 100px;
 		padding: 5px;
 		cursor: pointer;
+		margin-left: 55px;
 
 	}
 
@@ -523,7 +524,7 @@
 	}
 
 	.modale_photo {
-		background-color: #4f94d4;
+		
 		border-radius: 100px;
 		padding: 8px;
 		color: blue;
@@ -538,6 +539,7 @@
 		color: black;
 		font-size: 20px;
 		margin-top: 55px;
+		margin-bottom: 35px;
 	}
 
 	.icone_retour {
@@ -587,9 +589,15 @@
 	cursor: pointer;
 }
 
+.login{
+	color: black;
+	text-decoration: none;
+}
+
 	.login.active {
 		display: none;
 		cursor: pointer;
+		text-decoration: none;
 	}
 
 	.logout {
@@ -638,5 +646,48 @@
 		padding-left: 25px;
 		padding-right: 25px;
 		margin-left: 45px;
+	}
 
+	.link_a{
+		text-decoration: none;
+		color: black;
+		font-weight: bold;
+
+	}
+	  
+	.modale_picture_body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 35px;
+		background-color: #4f94d4;
+		font-size: smaller;
+		padding: 4px;
+	}
+
+	.modale_photo2{
+		display: flex;
+		flex-direction: column;
+		margin-left: 75px;
+		margin-right: 75px;
+		gap: 20px;
+
+	}
+	
+	.modale_footer2 {
+		border-bottom: solid gray 2px;
+		display: flex;
+		flex-direction: column;
+		gap: 25px;
+		padding-bottom: 20px;
+		
+	}
+
+	.label_css {
+		border: none;
+		box-shadow: 2px 2px 2px gray;
+		padding-right: 40px;
+		padding-left: 25px;
+		padding: 5px;
+		
 	}

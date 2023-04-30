@@ -110,6 +110,11 @@ function buildWorks(works) {
 
 // Fonction pour ouvrir la modale et afficher les works
 async function openModal() {
+  // Si la modale est déjà ouverte, on ne fait rien
+  if (worksContainer.children.length > 0) {
+    return;
+  }
+
   const works = await fetchWorks();
   buildWorks(works);
   modal.style.display = "block";

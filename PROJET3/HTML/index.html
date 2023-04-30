@@ -44,29 +44,38 @@
 			<div class="icone_retour">retour</div>
 			<div class="modale_header_close modale-trigger">X</div>
 			<h2 class="modale_header_photo">Ajout Photo</h2>
+			<div class="modale_photo2">
+				<div class="modale_picture_body">
+					<img id="preview_img" width="150px">
+					<div>
+						<label for="image-input">+ Ajouter une image</label>
+						<input type="file" id="image-input" name="image">
+					</div>
+					<span>jpg, png: 4mo max</span>
+				</div>
+				<div class="modale_footer2">
+					<label for="title-input">Titre</label>
+					<input class="label_css" type="text" id="title-input" name="title">
+					<label for="category">Catégorie</label>
+					<select class="label_css" id="category" name="category">
+						<option value="cat0"></option>
+						<option value="cat1">Objets</option>
+						<option value="cat2">Appartements</option>
+						<option value="cat3">Hôtels & Restaurants</option>
+					</select>
 
-			<img id="preview_img" width="150px">
-
-			<label for="image-input">Image :</label>
-			<input type="file" id="image-input" name="image">
-			<label for="title-input">Titre :</label>
-			<input type="text" id="title-input" name="title">
-			<label for="category">Catégorie :</label>
-			<select id="category" name="category">
-				<option value="cat1">Bar & restaurants</option>
-				<option value="cat2">Catégorie 2</option>
-				<option value="cat3">Catégorie 3</option>
-			</select>
-			<button class="modale_footer_photo">Valider</button>
+				</div>
+				<button class="modale_footer_photo">Valider</button>
+			</div>
 		</div>
 	</div>
-	<header class="header">
+	<header class="header_margin">
 		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 		<nav>
 			<ul>
 				<li>projets</li>
 				<li>contact</li>
-				<a href="/PROJET3/HTML/conexion.html">
+				<a class="link_a" href="/PROJET3/HTML/conexion.html">
 					<li class="login">login</li>
 					<li class="logout">logout</li>
 				</a>
