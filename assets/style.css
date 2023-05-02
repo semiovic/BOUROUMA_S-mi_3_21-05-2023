@@ -357,7 +357,6 @@
 		gap: 25px;
 		display: none;
 		border-radius: 10px;
-
 	}
 
 	.modale.active {
@@ -369,7 +368,7 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: 100%;
+		height: 262%;
 		background-color: rgba(0,0,0,0.5);
 		display: none;
 	  }

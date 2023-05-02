@@ -135,9 +135,13 @@ function closeModal() {
   let overlay = document.querySelector(".overlay")
   overlay.style.display = "none"
 
-}
+  let imgPreview = document.querySelector('#preview_img')
+  imgPreview.style.display = "none"
 
-// FERMETURE CLICK OVERLAY //
+  let inputLabel = document.querySelector(".label_input_img")
+  inputLabel.style.display = "block"
+
+}
 
 
 
@@ -159,6 +163,9 @@ modaleTrigger2.addEventListener("click", closeModal)
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeModal();
+  }
+  if (closeModal){
+    location.reload
   }
 });
 
@@ -193,6 +200,27 @@ supprimerViaModale.addEventListener("click", () => {
   location.reload();
 });
 
+// PREVIEW IMG //
+
+// Sélectionnez l'élément d'entrée de fichier
+let input = document.querySelector('#image-input');
+// Sélectionnez l'élément d'image de prévisualisation
+let imgPreview = document.querySelector('#preview_img');
+let inputLabel = document.querySelector(".label_input_img")
+let imgFa = document.querySelector(".fa fa-image")
+
+// Ajoutez un écouteur d'événement de changement de fichier
+input.addEventListener('change', function() {
+  // Vérifiez si l'utilisateur a sélectionné un fichier
+  if (input.files && input.files[0]) {
+    // Créez un objet URL pour l'image sélectionnée
+    const imgURL = URL.createObjectURL(input.files[0]);
+    // Afficher l'image dans l'élément img de prévisualisation
+    imgPreview.src = imgURL;
+    inputLabel.style.display = "none"
+
+  }
+});
 
 
 //in modale open ajout photo//
