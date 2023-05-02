@@ -735,3 +735,7 @@
 		display: none;
 	}
 
+	.fa fa-image{
+		border: solid red 2px;
+	}
+

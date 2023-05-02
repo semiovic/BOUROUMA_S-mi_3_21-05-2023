@@ -143,6 +143,10 @@ function closeModal() {
 
 }
 
+// OVERLAY CLOSE //
+
+let overlay = document.querySelector(".overlay")
+overlay.addEventListener("click", closeModal)
 
 
 // Événement pour ouvrir la modale
