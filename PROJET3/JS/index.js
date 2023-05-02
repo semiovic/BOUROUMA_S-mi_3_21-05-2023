@@ -118,16 +118,33 @@ async function openModal() {
   const works = await fetchWorks();
   buildWorks(works);
   modal.style.display = "block";
+
+  let overlay = document.querySelector(".overlay")
+  overlay.style.display = "block"
+
 }
 
 // Fonction pour fermer la modale et vider le contenu
 function closeModal() {
   modal.style.display = "none";
   worksContainer.innerHTML = "";
+  
+  let modale_picture = document.querySelector(".modale_picture_container")
+  modale_picture.style.display = "none"
+
+  let overlay = document.querySelector(".overlay")
+  overlay.style.display = "none"
+
 }
+
+// FERMETURE CLICK OVERLAY //
+
+
 
 // Événement pour ouvrir la modale
 openModalBtn.addEventListener("click", openModal);
+
+
 
 // Événement pour fermer la modale
 const modaleTrigger = document.querySelector(".modale_header_x")
@@ -180,6 +197,7 @@ supprimerViaModale.addEventListener("click", () => {
 
 //in modale open ajout photo//
 
+
 let modale = document.querySelector(".modale")
 
 let modaleAddPicture = document.querySelector(".modale_add_picture")
@@ -187,10 +205,14 @@ let modaleAddPicture = document.querySelector(".modale_add_picture")
 let addPictureButton = document.querySelector(".modale_footer_button")
 
 addPictureButton.addEventListener("click", toggleModalePicture)
- 
-function toggleModalePicture(){
+
+function toggleModalePicture() {
   modaleAddPicture.classList.toggle("active")
   modale.classList.remove("active")
+
+  let modale_picture = document.querySelector(".modale_picture_container")
+  modale_picture.style.display = "block"
+
 }
 
 
@@ -201,7 +223,7 @@ let returnModale = document.querySelector(".icone_retour")
 
 returnModale.addEventListener("click", backModale)
 
-function backModale(){
+function backModale() {
   modaleAddPicture.classList.remove("active")
   modale.classList.toggle("active")
 }
@@ -244,9 +266,9 @@ addPhotoChoice.addEventListener("click", async (event) => {
     console.error(error);
   }
 });
- 
 
-  
+
+
 
 // Vérifiez si le token est présent dans le localStorage
 const token = localStorage.getItem('token');
@@ -263,13 +285,26 @@ if (token) {
 
   let linkLogout = document.querySelector(".logout")
   linkLogout.classList.toggle("active")
-linkLogout.addEventListener("click", function(){
-  localStorage.clear()
-})
-linkLogout.addEventListener("click", function(){
-  localStorage.clear();
-  window.location.replace("index.html")
-})
+  linkLogout.addEventListener("click", function () {
+    localStorage.clear()
+  })
+
+  let filters = document.querySelector("#filters")
+  filters.classList.toggle("active")
+
+  linkLogout.addEventListener("click", function () {
+    localStorage.clear();
+    window.location.replace("index.html")
+  })
+  
+  let modifier1 = document.querySelector(".modifier1")
+  let modifier2 = document.querySelector(".modifier2")
+
+  modifier1.classList.toggle("active")
+  modifier2.classList.toggle("active")
+
+  modifier1.addEventListener("click", openModal)
+  modifier2.addEventListener("click", openModal)
 
 } else {
   // Si le token n'est pas présent, masquer la modale

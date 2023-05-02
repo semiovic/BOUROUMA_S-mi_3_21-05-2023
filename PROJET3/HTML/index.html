@@ -22,7 +22,7 @@
 		<div class="modale_edit">Mode édition</div>
 		<div class="modale_publication"> publier les changements</div>
 	</div>
-
+	<div class="overlay"></div>
 
 	<div class="modale">
 
@@ -42,10 +42,11 @@
 	<div class="modale_picture_container">
 		<div class="modale_add_picture">
 			<div class="icone_retour">retour</div>
-			<div class="modale_header_close modale-trigger">X</div>
+			<div class="modale_header_close">X</div>
 			<h2 class="modale_header_photo">Ajout Photo</h2>
 			<div class="modale_photo2">
 				<div class="modale_picture_body">
+					<i class="fa fa-image"></i>
 					<img id="preview_img" width="150px">
 					<div>
 						<label for="image-input">+ Ajouter une image</label>
@@ -87,6 +88,7 @@
 		<section id="introduction">
 			<figure>
 				<img src="/assets/images/sophie-bluel.png" alt="">
+				<div class="modifier1"><i class="fa-solid fa-pen-to-square"></i>modifier</div>
 			</figure>
 			<article>
 				<h2>Designer d'espace</h2>
@@ -100,7 +102,9 @@
 			</article>
 		</section>
 		<section id="portfolio">
-			<h2>Mes Projets</h2>
+			<div class="test"><h2>Mes Projets</h2> <div class="modifier2"><i class="fa-solid fa-pen-to-square"></i>modifier</div></div>
+		
+		
 			<section id="filters" class="space_section">
 				<div class="border_class" id="all">Tous</div>
 				<div class="border_class" id="objets" data-categoryId="1">Objets</div>
