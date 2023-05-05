@@ -270,11 +270,15 @@ addPhotoChoice.addEventListener("click", async (event) => {
   const title = document.getElementById("title-input").value;
   const category = document.getElementById("category").value;
   const image = document.getElementById("image-input");
+  const categorySelect = document.getElementById("category");
+const selectedOption = categorySelect.options[categorySelect.selectedIndex];
+const categoryId = selectedOption.getAttribute("data-id");
+
   console.log(image); // imprimer la valeur de l'élément HTML pour le champ de fichier
 
   const formData = new FormData();
   formData.append("title", title);
-  formData.append("category", category);
+  formData.append("categoryId", categoryId);
   formData.append("image", image.files[0]);
 
   try {
