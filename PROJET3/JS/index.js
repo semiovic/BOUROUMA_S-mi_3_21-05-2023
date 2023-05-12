@@ -128,7 +128,7 @@ async function openModal() {
 function closeModal() {
   modal.style.display = "none";
   worksContainer.innerHTML = "";
-  
+
   let modale_picture = document.querySelector(".modale_picture_container")
   modale_picture.style.display = "none"
 
@@ -168,7 +168,7 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeModal();
   }
-  if (closeModal){
+  if (closeModal) {
     location.reload
   }
 });
@@ -191,6 +191,7 @@ async function deleteWork(workId, workDiv) {
     } else {
       console.error("Une erreur est survenue lors de la suppression de l'image.");
     }
+
   } catch (error) {
     console.error(error);
   }
@@ -201,7 +202,7 @@ async function deleteWork(workId, workDiv) {
 const supprimerViaModale = document.querySelector(".modale_footer_delete");
 
 supprimerViaModale.addEventListener("click", () => {
-  location.reload();
+  closeModal()
 });
 
 // PREVIEW IMG //
@@ -212,9 +213,10 @@ let input = document.querySelector('#image-input');
 let imgPreview = document.querySelector('#preview_img');
 let inputLabel = document.querySelector(".label_input_img")
 let imgFa = document.querySelector(".fa fa-image")
+let bodyPicture = document.querySelector(".modale_picture_body")
 
 // Ajoutez un écouteur d'événement de changement de fichier
-input.addEventListener('change', function() {
+input.addEventListener('change', function () {
   // Vérifiez si l'utilisateur a sélectionné un fichier
   if (input.files && input.files[0]) {
     // Créez un objet URL pour l'image sélectionnée
@@ -222,6 +224,7 @@ input.addEventListener('change', function() {
     // Afficher l'image dans l'élément img de prévisualisation
     imgPreview.src = imgURL;
     inputLabel.style.display = "none"
+    bodyPicture.style.display = "none"
 
   }
 });
@@ -271,14 +274,15 @@ addPhotoChoice.addEventListener("click", async (event) => {
   const category = document.getElementById("category").value;
   const image = document.getElementById("image-input");
   const categorySelect = document.getElementById("category");
-const selectedOption = categorySelect.options[categorySelect.selectedIndex];
-const categoryId = selectedOption.getAttribute("data-id");
+  const selectedOption = categorySelect.options[categorySelect.selectedIndex];
+  const categoryId = selectedOption.getAttribute("data-id");
+  closeModal()
 
   console.log(image); // imprimer la valeur de l'élément HTML pour le champ de fichier
 
   const formData = new FormData();
   formData.append("title", title);
-  formData.append("categoryId", categoryId);
+  formData.append("category", categoryId);
   formData.append("image", image.files[0]);
 
   try {
@@ -296,8 +300,10 @@ const categoryId = selectedOption.getAttribute("data-id");
       throw new Error("Erreur lors de l'ajout de la photo");
     }
 
-    // Rafraîchir la page pour afficher la nouvelle photo
-    window.location.reload();
+    // LA PHOTO SAJOUTE SANS RELOAD LA PAGE
+    const newWork = await response.json()
+    works.push(newWork)
+    displayWorks()
   } catch (error) {
     console.error(error);
   }
@@ -332,7 +338,7 @@ if (token) {
     localStorage.clear();
     window.location.replace("index.html")
   })
-  
+
   let modifier1 = document.querySelector(".modifier1")
   let modifier2 = document.querySelector(".modifier2")
 

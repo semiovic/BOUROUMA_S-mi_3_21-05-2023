@@ -40,7 +40,7 @@ validation.addEventListener('click', function (event) {
         email: inputMail.value,
         password: inputPassword.value
       }),
-      headers: {  
+      headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
     }).then((response) => response.json())
@@ -48,7 +48,7 @@ validation.addEventListener('click', function (event) {
         localStorage.setItem('token', data.token);
         window.location.replace('/PROJET3/HTML/index.html');
       })
-      .catch((err)=> {
+      .catch((err) => {
         console.log(err);
       });
   } else {

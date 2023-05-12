@@ -12,6 +12,8 @@
 	<script src="https://kit.fontawesome.com/d20e27baad.js" crossorigin="anonymous"></script>
 	<meta name="description" content="">
 	<link rel="stylesheet" href="/assets/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 </head>
 
 <body>
@@ -41,19 +43,23 @@
 	</div>
 	<div class="modale_picture_container">
 		<div class="modale_add_picture">
-			<div class="icone_retour">retour</div>
+			<div class="icone_retour"><i class="fa-solid fa-arrow-left"></i></div>
 			<div class="modale_header_close">X</div>
 			<h2 class="modale_header_photo">Ajout Photo</h2>
 			<div class="modale_photo2">
+
 				<div class="modale_picture_body">
 					<i class="fa fa-image" widht="100px"></i>
-					<img id="preview_img" width="100px">
-					<div class="label_input_img"> 
-						<label for="image-input">+ Ajouter une image</label>
+
+					<div class="label_input_img">
+						<label for="image-input">
+							<span class="add_pic_css">+ Ajouter une image</span>
+						</label>
 						<input type="file" id="image-input" name="image">
 					</div>
 					<span>jpg, png: 4mo max</span>
 				</div>
+				<img id="preview_img" width="100px">
 				<div class="modale_footer2">
 					<label for="title-input">Titre</label>
 					<input class="label_css" type="text" id="title-input" name="title">
@@ -102,9 +108,12 @@
 			</article>
 		</section>
 		<section id="portfolio">
-			<div class="test"><h2>Mes Projets</h2> <div class="modifier2"><i class="fa-solid fa-pen-to-square"></i>modifier</div></div>
-		
-		
+			<div class="test">
+				<h2>Mes Projets</h2>
+				<div class="modifier2"><i class="fa-solid fa-pen-to-square"></i>modifier</div>
+			</div>
+
+
 			<section id="filters" class="space_section">
 				<div class="border_class" id="all">Tous</div>
 				<div class="border_class" id="objets" data-categoryId="1">Objets</div>
