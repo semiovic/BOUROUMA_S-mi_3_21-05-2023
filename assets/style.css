@@ -740,6 +740,7 @@
 	.preview_img {
 		display: flex;
 		justify-content: center;
+		align-items: center;
 	}
 
 	.label_input_img {
@@ -778,4 +779,11 @@
 		background-color: #99d3cd;
 		padding: 10px;
 		cursor: pointer;
+	  }
+
+	  .img_div {
+		background-color: #e7fffe;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	  }
