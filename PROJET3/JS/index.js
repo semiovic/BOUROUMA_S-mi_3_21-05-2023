@@ -175,6 +175,7 @@ document.addEventListener("keydown", (event) => {
 
 // SUPRESSION IMG VIA MODALE //
 
+works = works.filter(work => work.id !== workId);
 
 async function deleteWork(workId, workDiv) {
   try {
@@ -188,14 +189,20 @@ async function deleteWork(workId, workDiv) {
     if (response.ok) {
       // Supprimer l'élément parent de l'icône
       workDiv.parentNode.removeChild(workDiv);
+
+      // Mettre à jour le tableau `works`
+      works = works.filter(work => work.id !== workId);
+
+      // Mettre à jour l'affichage
+      displayWorks();
     } else {
       console.error("Une erreur est survenue lors de la suppression de l'image.");
     }
-
   } catch (error) {
     console.error(error);
   }
 }
+
 
 // BOUTTON SuPRESSION GALERI QUI REFRESH PAGE // 
 
