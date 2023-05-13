@@ -135,11 +135,11 @@ function closeModal() {
   let overlay = document.querySelector(".overlay")
   overlay.style.display = "none"
 
-  let imgPreview = document.querySelector('#preview_img')
-  imgPreview.style.display = "none"
 
   let inputLabel = document.querySelector(".label_input_img")
   inputLabel.style.display = "block"
+
+
 
 }
 
@@ -232,7 +232,6 @@ input.addEventListener('change', function () {
     imgPreview.src = imgURL;
     inputLabel.style.display = "none"
     bodyPicture.style.display = "none"
-
   }
 });
 
@@ -249,11 +248,16 @@ let addPictureButton = document.querySelector(".modale_footer_button")
 addPictureButton.addEventListener("click", toggleModalePicture)
 
 function toggleModalePicture() {
-  modaleAddPicture.classList.toggle("active")
+  modaleAddPicture.classList.add("active")
   modale.classList.remove("active")
 
   let modale_picture = document.querySelector(".modale_picture_container")
   modale_picture.style.display = "block"
+
+  let inputLabel = document.querySelector(".label_input_img")
+  inputLabel.style.display = "block"
+
+  
 
 }
 
@@ -267,7 +271,7 @@ returnModale.addEventListener("click", backModale)
 
 function backModale() {
   modaleAddPicture.classList.remove("active")
-  modale.classList.toggle("active")
+  modale.classList.add("active")
 }
 
 
@@ -278,13 +282,12 @@ const addPhotoChoice = document.querySelector(".modale_footer_photo");
 addPhotoChoice.addEventListener("click", async (event) => {
   event.preventDefault();
   const title = document.getElementById("title-input").value;
-  const category = document.getElementById("category").value;
   const image = document.getElementById("image-input");
   const categorySelect = document.getElementById("category");
   const selectedOption = categorySelect.options[categorySelect.selectedIndex];
   const categoryId = selectedOption.getAttribute("data-id");
-  closeModal()
-
+  let bodyPicture = document.querySelector(".modale_picture_body")
+  bodyPicture.style.display = "flex"
   console.log(image); // imprimer la valeur de l'élément HTML pour le champ de fichier
 
   const formData = new FormData();
@@ -311,6 +314,7 @@ addPhotoChoice.addEventListener("click", async (event) => {
     const newWork = await response.json()
     works.push(newWork)
     displayWorks()
+    closeModal()
   } catch (error) {
     console.error(error);
   }
@@ -321,7 +325,7 @@ addPhotoChoice.addEventListener("click", async (event) => {
 
 // Vérifiez si le token est présent dans le localStorage
 const token = localStorage.getItem('token');
-console.log(token)
+
 
 // Si le token est présent, afficher la modale
 if (token) {
