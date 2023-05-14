@@ -143,6 +143,8 @@ function closeModal() {
   imgPreview.style.display = "none"
   imgPreview.src = ''
 
+
+  
 }
 
 // OVERLAY CLOSE //
@@ -296,6 +298,10 @@ addPhotoChoice.addEventListener("click", async (event) => {
   let bodyPicture = document.querySelector(".modale_picture_body")
   bodyPicture.style.display = "flex"
   console.log(image); // imprimer la valeur de l'élément HTML pour le champ de fichier
+
+  let imgPreview = document.querySelector('#preview_img')
+  imgPreview.style.display = "none"
+  imgPreview.src = ''
 
   const formData = new FormData();
   formData.append("title", title);
