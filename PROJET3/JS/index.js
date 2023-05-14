@@ -139,7 +139,9 @@ function closeModal() {
   let inputLabel = document.querySelector(".label_input_img")
   inputLabel.style.display = "block"
 
-
+  let imgPreview = document.querySelector('#preview_img')
+  imgPreview.style.display = "none"
+  imgPreview.src = ''
 
 }
 
@@ -221,6 +223,7 @@ let imgPreview = document.querySelector('#preview_img');
 let inputLabel = document.querySelector(".label_input_img")
 let imgFa = document.querySelector(".fa fa-image")
 let bodyPicture = document.querySelector(".modale_picture_body")
+let imgDiv = document.querySelector(".img_div")
 
 // Ajoutez un écouteur d'événement de changement de fichier
 input.addEventListener('change', function () {
@@ -232,6 +235,9 @@ input.addEventListener('change', function () {
     imgPreview.src = imgURL;
     inputLabel.style.display = "none"
     bodyPicture.style.display = "none"
+  } else{
+    imgPreview.style.display = 'none'
+    imgDiv.style.display = 'none'
   }
 });
 
@@ -257,7 +263,8 @@ function toggleModalePicture() {
   let inputLabel = document.querySelector(".label_input_img")
   inputLabel.style.display = "block"
 
-  
+  let imgPreview = document.querySelector('#preview_img')
+  imgPreview.style.display = "block"
 
 }
 
