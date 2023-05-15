@@ -139,11 +139,7 @@ function closeModal() {
   let inputLabel = document.querySelector(".label_input_img")
   inputLabel.style.display = "block"
 
-  let imgPreview = document.querySelector('#preview_img')
-  imgPreview.style.display = "none"
-  imgPreview.src = ''
-
-
+ 
   
 }
 
