@@ -493,6 +493,10 @@
 
 	}
 
+	.modale_footer_photo {
+		
+	}
+
 	.modale_picture {
 		margin-top: 40px;
 		margin-left: 35px;
@@ -787,3 +791,13 @@
 		align-items: center;
 		justify-content: center;
 	  }
+
+	 #works-container {
+		border-bottom: 2px solid #ccc;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		padding-bottom: 30px;
+		margin-bottom: 25px;
+	 }

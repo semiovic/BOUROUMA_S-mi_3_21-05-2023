@@ -139,8 +139,8 @@ function closeModal() {
   let inputLabel = document.querySelector(".label_input_img")
   inputLabel.style.display = "block"
 
- 
-  
+
+
 }
 
 // OVERLAY CLOSE //
@@ -222,20 +222,23 @@ let inputLabel = document.querySelector(".label_input_img")
 let imgFa = document.querySelector(".fa fa-image")
 let bodyPicture = document.querySelector(".modale_picture_body")
 let imgDiv = document.querySelector(".img_div")
+let validateButton = document.querySelector(".modale_footer_photo")
 
 // Ajoutez un écouteur d'événement de changement de fichier
 input.addEventListener('change', function () {
   // Vérifiez si l'utilisateur a sélectionné un fichier
   if (input.files && input.files[0]) {
     // Créez un objet URL pour l'image sélectionnée
+    validateButton.style.backgroundColor = '#1D6154'
     const imgURL = URL.createObjectURL(input.files[0]);
     // Afficher l'image dans l'élément img de prévisualisation
     imgPreview.src = imgURL;
     inputLabel.style.display = "none"
     bodyPicture.style.display = "none"
-  } else{
+  } else {
     imgPreview.style.display = 'none'
     imgDiv.style.display = 'none'
+
   }
 });
 
