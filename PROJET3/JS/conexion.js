@@ -33,25 +33,27 @@ validation.addEventListener('click', function (event) {
   }
 
   // Envoi de la requête
-  if (inputMail.value === "sophie.bluel@test.tld" && inputPassword.value === "S0phie") {
-    fetch("http://localhost:5678/api/users/login", {
-      method: 'POST',
-      body: JSON.stringify({
-        email: inputMail.value,
-        password: inputPassword.value
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    }).then((response) => response.json())
-      .then((data) => {
-        localStorage.setItem('token', data.token);
-        window.location.replace('/PROJET3/HTML/index.html');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  } else {
-    alert("Nom d'utilisateur ou mot de passe incorrect.");
-  }
+  fetch('http://localhost:5678/api/users/login', {
+    method: 'POST',
+    body: JSON.stringify({
+      email: inputMail.value,
+      password: inputPassword.value
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    }
+  }).then((response) => {
+    if (response.ok) {
+      return response.json()
+    } else {
+      alert("Nom d'utilisateur ou mot de passe incorrect.")
+    }
+  })
+    .then((data) => {
+      localStorage.setItem('token', data.token)
+      window.location.replace('index.html')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 });

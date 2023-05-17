@@ -139,7 +139,11 @@ function closeModal() {
   let inputLabel = document.querySelector(".label_input_img")
   inputLabel.style.display = "block"
 
+  imgPreview.style.display = "none"
+  imgPreview.src = ''
+  bodyPicture.style.display = "flex"
 
+  // TODO VIDER LES INPUT (3) QUAND ON FERME MODALE //
 
 }
 
