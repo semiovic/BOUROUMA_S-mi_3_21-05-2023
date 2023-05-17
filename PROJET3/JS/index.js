@@ -306,6 +306,11 @@ addPhotoChoice.addEventListener("click", async (event) => {
   imgPreview.style.display = "none"
   imgPreview.src = ''
 
+  if (!title || !categoryId || image.files.length === 0) {
+    alert('Formulaire incomplet')
+    return
+  }
+
   const formData = new FormData();
   formData.append("title", title);
   formData.append("category", categoryId);
