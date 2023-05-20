@@ -114,7 +114,6 @@ async function openModal() {
   if (worksContainer.children.length > 0) {
     return;
   }
-
   const works = await fetchWorks();
   buildWorks(works);
   modal.style.display = "block";
@@ -258,6 +257,7 @@ let addPictureButton = document.querySelector(".modale_footer_button")
 
 addPictureButton.addEventListener("click", toggleModalePicture)
 
+
 function toggleModalePicture() {
   modaleAddPicture.classList.add("active")
   modale.classList.remove("active")
@@ -291,6 +291,8 @@ function backModale() {
 
 const addPhotoChoice = document.querySelector(".modale_footer_photo");
 
+
+
 addPhotoChoice.addEventListener("click", async (event) => {
   event.preventDefault();
   const title = document.getElementById("title-input").value;
@@ -299,6 +301,12 @@ addPhotoChoice.addEventListener("click", async (event) => {
   const selectedOption = categorySelect.options[categorySelect.selectedIndex];
   const categoryId = selectedOption.getAttribute("data-id");
   let bodyPicture = document.querySelector(".modale_picture_body")
+
+  if (!title || !categoryId || image.files.length === 0) {
+    alert('Formulaire incomplet')
+    return
+  }
+  else
   bodyPicture.style.display = "flex"
   console.log(image); // imprimer la valeur de l'élément HTML pour le champ de fichier
 
@@ -306,10 +314,6 @@ addPhotoChoice.addEventListener("click", async (event) => {
   imgPreview.style.display = "none"
   imgPreview.src = ''
 
-  if (!title || !categoryId || image.files.length === 0) {
-    alert('Formulaire incomplet')
-    return
-  }
 
   const formData = new FormData();
   formData.append("title", title);
